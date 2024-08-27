@@ -1,0 +1,20 @@
+{
+  "name": "astrobb",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "dev:db": "astro dev --remote",
+    "start": "astro dev",
+    "build": "astro build --remote",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "astro": "^4.14.5",
+    "@astrojs/db": "^0.13.2",
+    "@astrojs/partytown": "^2.1.1"
+  }
+}

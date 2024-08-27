@@ -1,0 +1,43 @@
+---
+import { db, Link } from 'astro:db'
+
+
+const links = await db.select().from(Link)
+
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro DB</h1>
+		{
+			links.map((link) => (
+				<div>
+					<a href={link.url}>{link.title}</a>
+					<time datetime={link.date.toISOString()}>
+						{link.date.toLocaleDateString()}
+					</time>
+					<p>Is Read {link.isRead ? '✅' : '❌'}</p>
+					<p>Upvotes: {link.upvoteNum.toLocaleString()}</p>
+				</div>
+			))
+		}
+	</body>
+</html>
+
+<style>
+	div {
+		display: grid;
+		gap: 0.2rem;
+		margin-block: 2rem;
+		padding:1rem;
+		border: 1px solid black;
+	}
+</style>
